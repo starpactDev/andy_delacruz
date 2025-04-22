@@ -1,0 +1,40 @@
+.translator-holder{
+    padding: 0 1rem;
+    background-color: transparent;
+
+}
+       /* Styles for the Google Translate dropdown */
+#google_translate_element .goog-te-combo {
+    border: 1px solid #007bff; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px; /* Padding inside the dropdown */
+    font-size: 16px; /* Font size */
+    background-color: #ffffff; /* White background */
+    color: #333; /* Dark text color */
+    transition: border-color 0.3s; /* Smooth border color transition */
+    margin-right: 10px; /* Space between dropdown and text */
+}
+
+/* Change border color on focus */
+#google_translate_element .goog-te-combo:focus {
+    border-color: #0056b3; /* Darker blue when focused */
+    outline: none; /* Remove default outline */
+}
+
+/* Styles for the Powered by Google Translate link */
+#google_translate_element a {
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 14px; /* Font size for the link */
+}
+
+/* Change link color on hover */
+#google_translate_element a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Optional: Styles for the Google logo */
+#google_translate_element img {
+    vertical-align: middle; /* Center logo vertically */
+    margin-right: 5px; /* Space between logo and text */
+}
