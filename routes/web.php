@@ -27,12 +27,12 @@ use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\SecretaryController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Customer\CustomerDashboard;
+use App\Http\Controllers\Seceretary\TruckController;
 use App\Http\Controllers\User\ManagerRoleController;
 use App\Http\Controllers\Admin\Due\PaymentController;
 use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\AddNotesByRdDriverController;
 use App\Http\Controllers\Admin\AdminProjectCOntroller;
-use App\Http\Controllers\Driver\DriverLoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +43,7 @@ use App\Http\Controllers\Driver\DriverLoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\Driver\DriverLoginController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\Manager\OrderPickUpController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -261,6 +262,9 @@ Route::get('/fetch-notes/{orderNumber}', [RouteController::class, 'fetchNotes'])
 
 Route::get('/user-login', [UserLoginController::class, 'user_login'])->name('user_login')->middleware('auth.redirect');
 Route::post('user-login-check', [UserLoginController::class, 'user_login_check'])->name('user_login_check')->middleware('auth.redirect');
+Route::post('/submit-truck', [TruckController::class, 'store'])->name('trucks.store');
+Route::post('/update-truck', [TruckController::class, 'update'])->name('trucks.update');
+Route::post('/delete-truck', [TruckController::class, 'destroy'])->name('trucks.destroy');
 
 Route::group(
     ["as" => "user.", "middleware" => ["user-access"]],
@@ -272,7 +276,7 @@ Route::group(
 //Survey
 Route::get('/survey/view/from/admin-manager/{orderId}', [SurveyController::class, 'showSurveybyAdmin'])->name('survey.view');
 // Secretary
-Route::get('/secretary/manage/dominican/expense-report', [SecretaryExpenseReportController::class, 'index'])->name('secretary.expense_report');
+Route::get('/secretary/manage/dominican/expense-report', [TruckController::class, 'index'])->name('secretary.expense_report');
 
         // manager
 
@@ -393,11 +397,12 @@ Route::get('/secretary/manage/dominican/expense-report', [SecretaryExpenseReport
         Route::post('/drivers/{id}', [DriverController::class, 'update'])->name('driver.update');
         Route::delete('/drivers/{id}', [DriverController::class, 'destroy'])->name('driver.destroy');
         Route::get('/drivers/{id}/show', [DriverController::class, 'show'])->name('driver.show');
-// Manage Secretary
-Route::get('/admin-manage-secretary', [SecretaryController::class, 'index'])->name('secretary.index');
-Route::post('/secretary/store', [SecretaryController::class, 'store'])->name('secretary.store');
-Route::post('/secretary/update', [SecretaryController::class, 'update'])->name('secretary.update');
-Route::delete('/secretary/{id}', [SecretaryController::class, 'destroy'])->name('secretary.destroy');
+
+        // Manage Secretary
+        Route::get('/admin-manage-secretary', [SecretaryController::class, 'index'])->name('secretary.index');
+        Route::post('/secretary/store', [SecretaryController::class, 'store'])->name('secretary.store');
+        Route::post('/secretary/update', [SecretaryController::class, 'update'])->name('secretary.update');
+        Route::delete('/secretary/{id}', [SecretaryController::class, 'destroy'])->name('secretary.destroy');
 
         //manager
         Route::post('/manager/store', [CustomerController::class, 'store'])->name('manager.store');

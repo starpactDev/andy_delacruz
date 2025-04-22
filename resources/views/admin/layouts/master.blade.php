@@ -9,6 +9,7 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="robots" content="noindex,nofollow" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>EMBARQUE PATON GOMEZ - Driver Dashboard</title>
     <link rel="canonical" href="" />
     <!-- Favicon icon -->
