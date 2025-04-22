@@ -273,10 +273,10 @@ Route::group(
         Route::get('/paypal-store-payment', [PaymentController::class, 'createPayment'])->name('store_payment_new');
         Route::get('/employee-view-pdf-invoice/{order_number}', [InvoiceController::class, 'invoice_pdf'])->name('invoice.pdf_index');
 
-//Survey
-Route::get('/survey/view/from/admin-manager/{orderId}', [SurveyController::class, 'showSurveybyAdmin'])->name('survey.view');
-// Secretary
-Route::get('/secretary/manage/dominican/expense-report', [TruckController::class, 'index'])->name('secretary.expense_report');
+        //Survey
+        Route::get('/survey/view/from/admin-manager/{orderId}', [SurveyController::class, 'showSurveybyAdmin'])->name('survey.view');
+        // Secretary
+        Route::get('/secretary/manage/dominican/expense-report', [TruckController::class, 'index'])->name('secretary.expense_report');
 
         // manager
 
